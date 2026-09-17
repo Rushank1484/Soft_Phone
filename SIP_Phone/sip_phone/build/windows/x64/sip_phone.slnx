@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Profile"/>
+		<BuildType Name="Release"/>
+		<Platform Name="x64"/>
+	</Configurations>
+	<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="71098f54-64ea-3c29-a416-56da51c535a1" DefaultStartup="true">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="flutter/flutter_wrapper_app.vcxproj"/>
+		<BuildDependency Project="flutter/flutter_wrapper_plugin.vcxproj"/>
+		<BuildDependency Project="runner/sip_phone.vcxproj"/>
+	</Project>
+	<Project Path="INSTALL.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="6c2d0b65-8d2e-3694-9f84-051cedcfe1a9">
+		<BuildDependency Project="ALL_BUILD.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2006d08c-8151-3ea5-96e9-1fcfb932bdd9"/>
+	<Project Path="flutter/flutter_assemble.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="b60518f8-e5f5-3bc0-b22c-957ed6272787">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="flutter/flutter_wrapper_app.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7302b332-2f3b-3849-a933-d370cb09affb">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="flutter/flutter_assemble.vcxproj"/>
+	</Project>
+	<Project Path="flutter/flutter_wrapper_plugin.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="0752097f-5e52-3efc-8410-e0546554256c">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="flutter/flutter_assemble.vcxproj"/>
+	</Project>
+	<Project Path="runner/sip_phone.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="ed8bcf57-b7ca-3a5e-8491-86e5499dd8a0">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="flutter/flutter_assemble.vcxproj"/>
+		<BuildDependency Project="flutter/flutter_wrapper_app.vcxproj"/>
+	</Project>
+</Solution>

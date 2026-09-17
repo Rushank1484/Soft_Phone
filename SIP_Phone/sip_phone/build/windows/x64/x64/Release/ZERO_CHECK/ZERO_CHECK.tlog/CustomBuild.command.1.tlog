@@ -1,0 +1,10 @@
+^C:\RUSHANK\BALATRIX\SIP_PHONE\FLUTTER\SIP_PHONE\SIP_PHONE\BUILD\WINDOWS\X64\CMAKEFILES\F9F0E5866602AED3B0BCA7C8A505E5C4\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Rushank/Balatrix/SIP_Phone/Flutter/SIP_Phone/sip_phone/windows -BC:/Rushank/Balatrix/SIP_Phone/Flutter/SIP_Phone/sip_phone/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Rushank/Balatrix/SIP_Phone/Flutter/SIP_Phone/sip_phone/build/windows/x64/sip_phone.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
