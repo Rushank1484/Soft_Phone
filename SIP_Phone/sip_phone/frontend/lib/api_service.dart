@@ -3,13 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiUser {
-  const ApiUser({
-    required this.name,
-    required this.extension,
-    required this.token,
-  });
+  const ApiUser({required this.extension, required this.token});
 
-  final String name;
   final String extension;
   final String token;
 }
@@ -43,25 +38,20 @@ class SipPhoneApi {
   final http.Client _client;
 
   Future<ApiUser> login({
-    required String name,
     required String extension,
     required String password,
   }) async {
     final response = await _client.post(
       Uri.parse('$_configuredBaseUrl/auth/login'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        'name': name,
-        'extension': extension,
-        'password': password,
-      }),
+      body: jsonEncode({'extension': extension, 'password': password}),
     );
     final data = _decode(response);
-    if (response.statusCode != 200)
+    if (response.statusCode != 200) {
       throw ApiException(data['error'] as String? ?? 'Unable to sign in');
+    }
     final user = data['user'] as Map<String, dynamic>;
     return ApiUser(
-      name: user['name'] as String,
       extension: user['extension'] as String,
       token: data['token'] as String,
     );
@@ -77,8 +67,9 @@ class SipPhoneApi {
       body: jsonEncode({'destination': destination}),
     );
     final data = _decode(response);
-    if (response.statusCode != 201)
+    if (response.statusCode != 201) {
       throw ApiException(data['error'] as String? ?? 'Unable to record call');
+    }
   }
 
   Future<List<ApiRecentCall>> recentCalls(String token) async {
@@ -87,10 +78,11 @@ class SipPhoneApi {
       headers: {'Authorization': 'Bearer $token'},
     );
     final data = _decode(response);
-    if (response.statusCode != 200)
+    if (response.statusCode != 200) {
       throw ApiException(
         data['error'] as String? ?? 'Unable to load recent calls',
       );
+    }
     return (data['calls'] as List<dynamic>)
         .map((item) => ApiRecentCall.fromJson(item as Map<String, dynamic>))
         .take(10)

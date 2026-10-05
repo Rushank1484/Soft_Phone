@@ -73,17 +73,16 @@ Future<void> _login(HttpRequest request) async {
   final body = jsonDecode(
     await utf8.decoder.bind(request).join(),
   ) as Map<String, dynamic>;
-  final name = (body['name'] as String? ?? '').trim();
   final password = body['password'] as String? ?? '';
   final extension = (body['extension'] as String? ?? '').trim();
-  if (name.isEmpty) {
+  if (extension.isEmpty) {
     await _send(request, HttpStatus.unprocessableEntity, {
-      'error': 'Name is required',
+      'error': 'Extension is required',
     });
     return;
   }
 
-  users[extension] = {'name': name, 'extension': extension};
+  users[extension] = {'extension': extension};
   final token = '${DateTime.now().microsecondsSinceEpoch}-$extension';
   sessions[token] = users[extension]!;
   await _send(request, HttpStatus.ok, {
